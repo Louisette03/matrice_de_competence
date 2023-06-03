@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class KnowledgeLevel extends Model
 {
+    // Not necessary actually.. it will be surely removed in next versions
     use HasFactory;
 }
