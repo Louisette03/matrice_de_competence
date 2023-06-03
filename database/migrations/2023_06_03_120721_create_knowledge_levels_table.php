@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('knowledge_levels', function (Blueprint $table) {
             $table->id();
-            $table->string('libelle');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('module_id')->constrained();
+            $table->enum('level', ["not_knowledge", 'little_knowledge', 'master']);
             $table->timestamps();
         });
     }

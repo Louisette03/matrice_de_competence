@@ -3,9 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\project>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Project>
  */
 class ProjectFactory extends Factory
 {
@@ -17,7 +18,8 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'libel'=> Str::random(10),
+            'description'=> fake()->text(maxNbChars:50),
         ];
     }
 }

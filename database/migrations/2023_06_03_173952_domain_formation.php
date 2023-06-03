@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('modules', function (Blueprint $table) {
+        Schema::create('domain_formation', function (Blueprint $table) {
             $table->id();
             $table->foreignId('domain_id')->constrained();
-            $table->string('libel');
-            $table->string('description');
+            $table->foreignId('formation_id')->constrained();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modules');
+        Schema::dropIfExists('domain_formation');
     }
 };
