@@ -11,6 +11,7 @@ use App\Models\Project;
 use App\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
@@ -26,11 +27,32 @@ class DatabaseSeeder extends Seeder
             'name' => "admin",
         ]);
 
-        Role::factory()->create([
+        $collabRole = Role::factory()->create([
             'name' => "collaborator",
         ]);
 
         \App\Models\User::factory(9)->create();
+
+        Domain::factory(10)->create();
+        Project::factory(10)->create();
+        Module::factory(10)->create();
+        Formation::factory(10)->create();
+
+        foreach( \App\Models\User::all() as $user) {
+            $user->roles()->attach($collabRole);
+            $user->modules()->attach(Module::all()->random(), ["level" => Arr::random(["not_knowledge", 'little_knowledge', 'master'])]) ;
+            $user->save();
+        }
+
+        foreach(Module::all() as $module){
+            $module->projects()->attach(Project::all()->random()) ;
+            $module->save();
+        }
+
+        foreach(Domain::all() as $domain){
+            $domain->formations()->attach(Formation::all()->random()) ;
+            $domain->save();
+        }
 
         $adminUser = \App\Models\User::factory()->create([
             'fname' =>"admin",
@@ -45,9 +67,7 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        Domain::factory(10)->create();
-        Project::factory(10)->create();
-        Module::factory(10)->create();
-        Formation::factory(10)->create();
+        $adminUser->roles()->attach($adminRole);
+        $adminUser->save();
     }
 }
