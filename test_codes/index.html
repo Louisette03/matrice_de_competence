@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ma page</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <!-- Barre de navigation -->
+  <aside class="bg-white text-gray-200 flex flex-col h-screen w-1/6">
+    <div class="flex items-center justify-center h-16">
+      <img class="h-12 w-20 " src="logo.png" alt="Photo de profil">
+    </div>
+    <nav class="mt-6">
+      <ul class="space-y-1">
+        <!-- Option 1 avec dropdown -->
+        <li class="px-4 py-2">
+          <div class="flex items-center">
+            <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v1a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm2-2a1 1 0 00-1 1v1a1 1 0 001 1h10a1 1 0 001-1V4a1 1 0 00-1-1H5z" clip-rule="evenodd" />
+              <path d="M2 9a2 2 0 012-2h12a2 2 0 012 2v1a2 2 0 01-2 2H4a2 2 0 01-2-2V9zm2-2a1 1 0 00-1 1v1a1 1 0 001 1h12a1 1 0 001-1V8a1 1 0 00-1-1H4z" />
+              <path fill-rule="evenodd" d="M2 13a2 2 0 012-2h12a2 2 0 012 2v1a2 2 0 01-2 2H4a2 2 0 01-2-2v-1zm2-2a1 1 0 00-1 1v1a1 1 0 001 1h12a1 1 0 001-1v-1a1 1 0 00-1-1H4z" clip-rule="evenodd" />
+            </svg>
+            <a href="#" class="ml-2">Option 1</a>
+          </div>
+          <ul class="ml-6 mt-2 space-y-1">
+            <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white">Sous-option 1</a></li>
+            <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white">Sous-option 2</a></li>
+          </ul>
+        </li>
+        <!-- Option 2 -->
+        <li class="px-4 py-2">
+          <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M13.707 8.707a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 011.414-1.414L10 12.586l4.293-4.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+          <a href="#" class="ml-2">Option 2</a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Contenu principal -->
+  <main class="ml-1/ p-4">
+    <!-- Header -->
+    <header class="flex items-center justify-end fixed top-0 left-1/6 right-0 h-16 bg-white px-6 shadow-md w-5/6">
+      <div class="relative">
+        <button class="flex items-center focus:outline-none">
+          <img class="h-8 w-8 rounded-full" src="zizou.png" alt="Photo de profil">
+          <!-- <svg class="ml-2 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4zm-2-7a2 2 0 11-4 0 2 2 0 014 0zm10 0a2 2 0 11-4 0 2 2 0 014 0zM4.343 15.657a8 8 0 1011.314-11.314l-1.657-1.657A10 10 0 1115.657 4.343L14 6a8.003 8.003 0 00-9.193 9.194L4.343 15.657zm3.536-3.536a2 2 0 112.828-2.828 2 2 0 01-2.828 2.828z" clip-rule="evenodd" />
+          </svg> -->
+        </button>
+        <ul class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-md hidden">
+          <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Paramètres</a></li>
+          <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Déconnexion</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Contenu de la page -->
+    <div class="mt-16">
+      <!-- ... Contenu de la page ... -->
+      <h1>
+          contenu de la page
+      </h1>
+      <h1>
+          contenu de la page
+        </h1>
+        <h1>
+            contenu de la page
+        </h1>
+        <h1>
+            contenu de la page
+        </h1>
+        <h1 class="bg-black">
+          contenu de la page
+        </h1>
+      <h1>
+        contenu de la page
+      </h1>
+      <h1>
+        contenu de la page
+      </h1>
+      <h1>
+        contenu de la page
+      </h1>
+      <h1>
+        contenu de la page
+      </h1>
+      <h1>
+        contenu de la page
+      </h1>
+    </div>
+  </main>
+
+  <script>
+    // Script pour afficher ou masquer le menu déroulant de l'utilisateur
+    const dropdown = document.querySelector('.relative');
+    dropdown.addEventListener('click', () => {
+      const menu = dropdown.querySelector('ul');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

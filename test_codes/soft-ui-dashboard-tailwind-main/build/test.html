@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Accordion avec Tailwind CSS</title>
+  <style>
+    .accordion input[type="checkbox"] {
+      display: none;
+    }
+
+    .accordion .content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+    }
+
+    .accordion input[type="checkbox"]:checked+.content {
+      max-height: 9999px;
+      transition: max-height 0.35s ease-in;
+    }
+
+    .accordion label {
+      cursor: pointer;
+    }
+
+    .accordion .accordion-title {
+      font-weight: bold;
+      padding: 0.75rem;
+      background-color: #edf2f7;
+      border-bottom: 1px solid #cbd5e0;
+    }
+
+    .accordion .accordion-content {
+      padding: 0.75rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mx-auto py-8">
+    <div class="accordion">
+      <input type="checkbox" id="toggle-1" class="accordion-toggle">
+      <label class="accordion-title" for="toggle-1">Accordion 1</label>
+      <div class="content">
+        <div class="accordion-content">
+          <label for="select-1">Select Input:</label>
+          <select id="select-1" class="block w-full p-2 mt-2 border-gray-300 rounded-md focus:ring focus:ring-blue-200">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        </div>
+      </div>
+
+      <input type="checkbox" id="toggle-2" class="accordion-toggle">
+      <label class="accordion-title" for="toggle-2">Accordion 2</label>
+      <div class="content">
+        <div class="accordion-content">
+          <label for="select-2">Select Input:</label>
+          <select id="select-2" class="block w-full p-2 mt-2 border-gray-300 rounded-md focus:ring focus:ring-blue-200">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        </div>
+      </div>
+
+      <input type="checkbox" id="toggle-3" class="accordion-toggle">
+      <label class="accordion-title" for="toggle-3">Accordion 3</label>
+      <div class="content">
+        <div class="accordion-content">
+          <label for="select-3">Select Input:</label>
+          <select id="select-3" class="block w-full p-2 mt-2 border-gray-300 rounded-md focus:ring focus:ring-blue-200">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
