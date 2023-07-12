@@ -21,7 +21,7 @@ class UserFactory extends Factory
         return [
             'fname' => fake()->firstName(),
             'lname' => fake()->lastName(),
-            // 'role_id' => fake()->numberBetween(1, 2),
+            'role_id' => 1,
             'register' =>Str::random(10),
             'profile' => Arr::random(['it', 'at']),
             'status' => Arr::random(['intern', 'extern']),

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Domain;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +13,47 @@ use Illuminate\View\View;
 class ProfileController extends Controller
 {
     /**
+     *
+     */
+    public function index(Request $request): View
+    {
+
+        $user = Auth::user();
+        $user_id = Auth::id();
+
+        $modules = $user->modules;
+
+        $domains = Domain::all() ;
+
+        return view('collaborator.profile', compact("modules", "domains", "user_id"));
+    }
+
+
+    /**
+     *
+     */
+    public function editSkills(Request $request)
+    {
+        $levels = [];
+
+        foreach ($request->all() as $key => $value) {
+            if (\Str::startsWith($key, 'knowledgelevel')) {
+                $levels[$key] = $value;
+            }
+        }
+
+        $user = Auth::user() ;
+        $modules = $user->modules ;
+
+        foreach($modules as $module){
+            $user->modules()->updateExistingPivot($module->id, ['level' => $levels["knowledgelevel_$module->id"]]) ;
+        }
+        $user->save() ;
+
+        return redirect()->back();
+    }
+
+     /**
      * Display the user's profile form.
      */
     public function edit(Request $request): View
@@ -36,6 +78,9 @@ class ProfileController extends Controller
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
+
+
+
 
     /**
      * Delete the user's account.

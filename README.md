@@ -29,5 +29,6 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 - then execute `php artisan db:seed` command for seed tables with fake data 
 - and start development server with `php artisan serve` which will be accesible on `127.0.0.1:8000` by default
 
-If you would like drop all tables and re-seed table with fake data : `php artisan fresh && php artisan db:seed`
+If you would like drop all tables and re-seed table with fake data : `php artisan migrate:fresh && php artisan db:seed`
+
 
