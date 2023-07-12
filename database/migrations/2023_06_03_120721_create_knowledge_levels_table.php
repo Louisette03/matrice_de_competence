@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('module_id')->constrained();
-            $table->enum('level', ["not_knowledge", 'little_knowledge', 'master']);
+            $table->enum('level', ["not_knowledge", 'knowledge', 'master','expert']);
             $table->timestamps();
         });
     }

@@ -8,6 +8,7 @@ use App\Models\Domain;
 use App\Models\Formation;
 use App\Models\Module;
 use App\Models\Project;
+use App\Models\User;
 use App\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -23,12 +24,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $adminRole = Role::factory()->create([
-            'name' => "admin",
-        ]);
 
         $collabRole = Role::factory()->create([
             'name' => "collaborator",
+        ]);
+
+        $adminRole = Role::factory()->create([
+            'name' => "admin",
         ]);
 
         \App\Models\User::factory(9)->create();
@@ -38,10 +40,14 @@ class DatabaseSeeder extends Seeder
         Module::factory(10)->create();
         Formation::factory(10)->create();
 
-        foreach( \App\Models\User::all() as $user) {
-            $user->roles()->attach($collabRole);
-            $user->modules()->attach(Module::all()->random(), ["level" => Arr::random(["not_knowledge", 'little_knowledge', 'master'])]) ;
-            $user->save();
+        // Assoocier chaquun niveau de connaissance pour chaque moudle aux différents users
+        foreach(User::all() as $user){
+            if ($user->role != "admin"){
+                foreach(Module::all() as $module){
+                    $user->modules()->attach($module, ["level" => "not_knowledge"] );
+                }
+                $user->save();
+            }
         }
 
         foreach(Module::all() as $module){
@@ -58,6 +64,7 @@ class DatabaseSeeder extends Seeder
             'fname' =>"admin",
             'lname' =>"admin",
             'register' =>Str::random(10),
+            'role_id' => $adminRole->id,
             'profile' => \Illuminate\Support\Arr::random(['it', 'at']),
             'status' => 'intern',
             'hiring_date' => Carbon::now(),
@@ -67,7 +74,11 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        $adminUser->roles()->attach($adminRole);
-        $adminUser->save();
+        // $adminUser->roles()->attach($adminRole);
+        // $adminUser->save();
+
+
     }
+
+
 }

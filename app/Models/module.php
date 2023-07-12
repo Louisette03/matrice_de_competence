@@ -36,7 +36,7 @@ class Module extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function users(): BelongsToMany
+    public function knowledgeLevels(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'knowledge_levels', 'module_id', 'user_id')->withPivot('level')->withTimestamps();
     }
